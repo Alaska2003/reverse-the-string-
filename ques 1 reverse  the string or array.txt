@@ -1,0 +1,58 @@
+brute: 
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int size = s.size();
+        int start = 0, end = size - 1;
+        while (start < end) {
+            char temp = s[start];
+            s[start] = s[end];
+            s[end] = temp;
+            start++;
+            end--;
+        }
+    }
+};
+
+Time Complexity (tc): O(n/2) -> O(n)
+Space Complexity (sc): O(1)
+
+
+optimzed: 
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int size = s.size();
+        for (int i = 0; i < size / 2; ++i) {
+            char temp = s[i];
+            s[i] = s[size - i - 1];
+            s[size - i - 1] = temp;
+        }
+    }
+};
+Time Complexity (tc): O(n/2) -> O(n)
+Space Complexity (sc): O(1)
+
+
+
+more optimized: 
+
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        stack<int>stack;
+        int n=s.size();
+        for(int i=0;i<n;i++){
+            stack.push(s[i]);
+        }
+
+        for(int i=0;i<n;i++){
+            s[i]=stack.top();
+            stack.pop();
+        }
+    }
+};
+Time Complexity (tc): O(n)
+Space Complexity (sc): O(n)
